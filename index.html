@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lorem Ipsum Cakes</title>
+        <meta charset="utf-8">
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+        <script
+          src="https://code.jquery.com/jquery-3.5.1.min.js"
+          integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+          crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Gruesa+Libre&family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+        <style>
+            body{
+                padding-top: 170px;
+                background-color: #231f20;
+                color: white;
+                font-family: 'Averia Gruesa Libre', cursive;
+                background: url(bg.jpg) no-repeat center center fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            h1, h2, h3, h4, h5, h6, p{
+                margin: 0;
+                margin-bottom: 10px;
+            }
+            #cover{
+                position: fixed;
+                background: url(cover.jpg) no-repeat center center fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+            #appbar{
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                padding: 30px;
+                
+                color: white;
+                font-size: 30px;
+                text-align: center;
+                
+            }
+            
+            .block{
+                background-color: rgba(196,153,108,.5);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                padding: 20px;
+                margin: 20px;
+                color: white;
+                border-radius: 10px;
+            }
+            
+            .greenblock{
+                background-color: #00cd05;
+                padding: 20px;
+                margin: 20px;
+                color: white;
+                border-radius: 10px;
+            }
+            select, input{
+                box-sizing: border-box;
+                width: 100%;
+                padding: 20px;
+                margin-bottom: 10px;
+                font-family: 'Averia Gruesa Libre', cursive;
+                font-size: 16px;
+                border-radius: 5px;
+                outline: none;
+                border: none;
+            }
+            #drawer{
+                position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                padding-top: 70px;
+                background-color: gray;
+                width: 70%;
+                max-width: 512px;
+                color: white;
+                display: none;
+            }
+            .draweritem{
+                padding: 20px;
+                border-bottom: 1px solid white;
+            }
+            
+            .nicefont{
+                font-family: 'Oleo Script Swash Caps', cursive;
+                font-weight: normal;
+                font-size: 22px;
+            }
+            
+            #cakes{
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding-top: 20px;
+                background-color: rgba(196,153,108,.75);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                display: none;
+            }
+            
+            .cakebutton{
+                background-color: rgba(255,255,255,.75);
+                border: 1px solid gray;
+                padding: 20px;
+                margin: 20px;
+                border-radius: 10px;
+                color: gray;
+            }
+        
+        </style>
+    </head>
+    <body>
+        
+        <div id="drawer">
+            <div class="draweritem" onclick=showpart("order")>Order Now</div>
+            <div class="draweritem" onclick=showpart("about")>About</div>
+        </div>
+        
+        <div id="whole">
+            <div id="appbar">
+                <img src="logo.png" width="256px;">
+            </div>
+            
+            <div class="page order">
+                <div class="block">
+                    <h3 align="center" class="nicefont">Contact Details</h3>
+                    <p>Order Number</p>
+                    <input id="ordernumber" value=123456 readonly>
+                    <p>Date</p>
+                    <input id="currentdate" readonly>
+                    <p>Name</p>
+                    <input id="ordername">
+                    <p>Address</p>
+                    <input id="orderaddress">
+                    <p>Phone No</p>
+                    <input type="number" id="orderphone">
+                </div>
+                <div class="block">
+                    <h3 align="center" class="nicefont">Choose your Cakes</h3>
+                    <input placeholder="Click to choose your cakes..." value="Click to choose your cakes..." readonly onclick="showcakechooser()">
+                    
+                </div>
+                
+                <div class="block">
+                    <h3 align="center" class="nicefont">Delivery Date</h3>
+                    <input id="datepicker" placeholder="Click to set Delivery Date..." readonly>
+                </div>
+                <div class="block">
+                    <h3 align="center" class="nicefont">Delivery Time</h3>
+                    <select id="deliverytime">
+                        <option>2:00pm to 3:00pm</option>
+                        <option>3:00pm to 4:00pm</option>
+                        <option>4:00pm to 5:00pm</option>
+                        <option>5:00pm to 6:00pm</option>
+                        <option>6:00pm to 7:00pm</option>
+                        <option>7:00pm to 8:00pm</option>
+                    </select>
+                </div>
+                <div class="block">
+                    <h3 align="center" class="nicefont">Payment Method</h3>
+                    <p>Cash on Delivery</p>
+                </div>
+                
+                <div class="greenblock" onclick="ordernow()">
+                    <h3 align="center" class="nicefont">Order Now</h3>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div id="cakes">
+            <h3 align="center" class="nicefont">Click each item to choose</h3>
+            <div id="cakebuttons">
+                
+            </div>
+            
+            <div class="cakebutton" style="background-color: #00cd05; text-align: center; color: white;" onclick="hidecakes()"><h3 align="center" class="nicefont">Continue</h3></div>
+        </div>
+        
+        <div id="cover"></div>
+        
+        <script>
+            function toggledrawer(){
+                $("#drawer").toggle()
+            }
+            
+            function showpart(part){
+                $("#drawer").hide()
+                $(".page").hide()
+                $("." + part).show()
+            }
+            
+            showpart("order")
+            
+            $("#whole").hide()
+            setTimeout(function(){
+                $("#cover").fadeOut()
+                $("#whole").fadeIn()
+            }, 2000)
+            
+            $("#ordernumber").val(function(){
+                return Math.floor(Math.random() * 9999) + 1000
+            })
+            
+            var today = new Date();
+            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date+' '+time;
+            
+            $("#currentdate").val(function(){
+                return dateTime
+            })
+            
+            $( function() {
+                $( "#datepicker" ).datepicker();
+            } );
+            
+            function showcakechooser(){
+                $("#cakes").fadeIn()
+            }
+            function hidecakes(){
+                $("#cakes").fadeOut()
+            }
+            
+            var products = [
+                "Lorem Butter Cake - $30 per kg",
+                "Ipsum Butter Cake - $35 per kg",
+                "Lorem Ipsum Bread - $35 per Kg",
+                "Choco Ipsum Dolor Tarts - $35 per kg",                
+            ]
+            
+            $("#cakebuttons").html(function(){
+                var pb = "";
+                for(var i = 0; i < products.length; i++){
+                    pb += "<div class='cakebutton' id='pb" +i+ "' onclick='togglepb("+i+")'><span><i class='fa fa-check'></i> </span>" + products[i] + "</div>"
+                }
+                return pb
+            })
+            
+            var orderdetails = {
+                cakes : []
+            }
+            
+            function togglepb(n){
+                //check is this cake added
+                if(dowehave(n)){
+                    $("#pb" + n).css({ "background-color" : "rgba(255,255,255,.75)", "color" : "gray", "border" : "1px solid gray" })
+                }else{
+                    $("#pb" + n).css({ "background-color" : "white", "color" : "#00cd05", "border" : "3px solid #00cd05" })
+                }
+            }
+            
+            function dowehave(n){
+                if(orderdetails.cakes.length > 0){
+                    for(var i = 0; i < orderdetails.cakes.length; i++){
+                        if(orderdetails.cakes[i] == n){
+                            orderdetails.cakes.splice(i, 1)
+                            return true
+                        }
+                    }
+                }
+                orderdetails.cakes.push(n)
+                return false
+            }
+           
+            function ordernow(){
+                var ordernumber = $("#ordernumber").val()
+                var orderdate = $("#currentdate").val()
+                var ordername = $("#ordername").val()
+                var orderaddress = $("#orderaddress").val()
+                var orderphone = $("#orderphone").val()
+                var deliverydate = $("#datepicker").val()
+                var deliverytime = $("#deliverytime").val()
+                
+                //check if all input are filled
+                var notcomplete = false
+                for(var i = 0; i < $("input").length; i++){
+                    if($("input").eq(i).val() == "")
+                        notcomplete = true
+                }
+                if(notcomplete)
+                    alert("Please fill all the form fields.")
+                else{
+                    var oi = "";
+                    if(orderdetails.cakes.length > 0){
+                        for(var i = 0; i < orderdetails.cakes.length; i++){
+                            oi += products[orderdetails.cakes[i]] + ", "
+                        }
+                        var ordermessage = "Order number: " + ordernumber + ", Order date: " + orderdate + ", Name: " + ordername + ", Address: " + orderaddress + ", Phone: " + orderphone + ", Delivery date: " + deliverydate + ", Delivery Time: " + deliverytime + ", Ordered Items: " + oi
+                        //alert(ordermessage)
+                        var omuri = encodeURI(ordermessage)
+                        location.href = "https://wa.me/6287880334339?text=" + omuri
+                    }
+                    else{
+                        alert("You did not choose any cake yet.")
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
